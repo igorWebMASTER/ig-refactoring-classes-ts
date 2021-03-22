@@ -4,15 +4,25 @@ import { FiEdit3, FiTrash } from 'react-icons/fi';
 import { Container } from './styles';
 import api from '../../services/api';
 
-function Food(props){
+
+
+// interface FoodPropsData{
+//   id: number;
+//   food: () => void;
+//   handleEditFood: () => void;
+// }
+
+function Food({food, handleEditFood, handleDelete}){
 
  const [isAvailable, setIsAvailable] = useState(true);
- const foods =  props.food;
+ const foods =  food;
+
+ console.log(food);
 
  const toggleAvailable = async () => {
 
-    await api.put(`/foods/${props.food.id}`, {
-      ...props.food,
+    await api.put(`/foods/${food.id}`, {
+      ...food,
       available: !isAvailable,
     });
 
@@ -20,7 +30,7 @@ function Food(props){
   }
 
  const setEditingFood = () => {
-    props.handleEditFood(props.food);
+    handleEditFood(food);
   }
 
 
@@ -50,7 +60,7 @@ function Food(props){
             <button
               type="button"
               className="icon"
-              onClick={() => props.handleDelete(foods.id)}
+              onClick={() => handleDelete(foods.id)}
               data-testid={`remove-food-${foods.id}`}
             >
               <FiTrash size={20} />

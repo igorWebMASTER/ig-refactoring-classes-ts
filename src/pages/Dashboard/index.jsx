@@ -16,7 +16,7 @@ function Dashboard () {
 
   useEffect(() => {
     async function loadFoods() {
-      const food = await api.get('/foods').then(response => setFood(response.data));
+      await api.get('/foods').then(response => setFood(response.data));
 
       return food;
     }
@@ -34,7 +34,6 @@ function Dashboard () {
       });
 
       setFood([...food, response.data]);
-      // this.setState({ foods: [...food, response.data] });
     } catch (err) {
       console.log(err);
     }

@@ -51,7 +51,7 @@ function Dashboard () {
         f.id !== foodUpdated.data.id ? f : foodUpdated.data,
       );
 
-     setFood([...food, foodsUpdated]);
+      setFood([...food, foodsUpdated]);
     } catch (err) {
       console.log(err);
     }

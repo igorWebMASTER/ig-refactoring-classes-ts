@@ -4,14 +4,6 @@ import { FiEdit3, FiTrash } from 'react-icons/fi';
 import { Container } from './styles';
 import api from '../../services/api';
 
-
-
-// interface FoodPropsData{
-//   id: number;
-//   food: () => void;
-//   handleEditFood: () => void;
-// }
-
 function Food({food, handleEditFood, handleDelete}){
 
  const [isAvailable, setIsAvailable] = useState(true);

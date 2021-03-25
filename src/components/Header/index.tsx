@@ -3,9 +3,11 @@ import { FiPlusSquare } from 'react-icons/fi';
 import { Container } from './styles';
 import Logo from '../../assets/logo.svg';
 
-function Header (props) {
+interface HeaderProps{
+  openModal: () => void;
+}
 
-    const openModal = props.openModal;
+function Header ({openModal} : HeaderProps) : JSX.Element{
 
     return (
       <Container>

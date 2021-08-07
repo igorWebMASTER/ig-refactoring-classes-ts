@@ -5,24 +5,20 @@ import { Form } from './styles';
 import Modal from '../Modal';
 import Input from '../Input';
 
-// interface ModalAddFoodProps{
-//   data: () => void;
-// }
+interface ModalAddFoodPropsData{
+  setIsOpen: () => void;
+  isOpen: boolean;
+  handleAddFood:Function;
+}
 
-// interface ModalAddFoodPropsData{
-//   setIsOpen: () => void;
-//   isOpen: boolean;
-//   handleAddFood:Function;
-// }
-
-function ModalAddFood(props ) {
+function ModalAddFood({ setIsOpen, isOpen, handleAddFood }: ModalAddFoodPropsData) {
   const formRef = createRef();
-  const setIsOpenProp = props.setIsOpen;
-  const isOpenProp = props.isOpen;
+  const setIsOpenProp = setIsOpen;
+  const isOpenProp = isOpen;
 
-  const handleSubmit  = async (data) => {
+  const handleSubmit  = async (data:any) => {
 
-    props.handleAddFood(data);
+    handleAddFood(data);
     setIsOpenProp();
   };
 
@@ -30,7 +26,7 @@ function ModalAddFood(props ) {
 
     return (
       <Modal isOpen={isOpenProp} setIsOpen={setIsOpenProp}>
-        <Form ref={formRef} onSubmit={handleSubmit}>
+        <Form ref={formRef  as any} onSubmit={handleSubmit}>
           <h1>Novo Prato</h1>
           <Input name="image" placeholder="Cole o link aqui" />
 

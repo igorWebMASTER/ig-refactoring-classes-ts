@@ -12,12 +12,10 @@ interface ModalEditFoodProps {
   editingFood: any;
   handleUpdateFood: (data: any) => void;
 }
-function ModalEditFood (props: ModalEditFoodProps) {
+function ModalEditFood ({isOpen, setIsOpen, editingFood, handleUpdateFood}: ModalEditFoodProps) {
   const formRef = createRef()
 
   const handleSubmit = async (data: ModalEditFoodProps) => {
-    const { setIsOpen, handleUpdateFood } = props;
-
     handleUpdateFood(data);
     setIsOpen();
   };
@@ -25,8 +23,8 @@ function ModalEditFood (props: ModalEditFoodProps) {
  
 
     return (
-      <Modal isOpen={props.isOpen} setIsOpen={props.setIsOpen}>
-        <Form ref={formRef as any} onSubmit={handleSubmit} initialData={props.editingFood}>
+      <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
+        <Form ref={formRef as any} onSubmit={handleSubmit} initialData={editingFood}>
           <h1>Editar Prato</h1>
           <Input name="image" placeholder="Cole o link aqui" />
 

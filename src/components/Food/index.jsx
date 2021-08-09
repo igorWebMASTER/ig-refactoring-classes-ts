@@ -9,15 +9,11 @@ function Food({food, handleEditFood, handleDelete}){
  const [isAvailable, setIsAvailable] = useState(true);
  const foods =  food;
 
- console.log(food);
-
  const toggleAvailable = async () => {
-
     await api.put(`/foods/${food.id}`, {
       ...food,
       available: !isAvailable,
     });
-
     setIsAvailable(isAvailable => !isAvailable);
   }
 

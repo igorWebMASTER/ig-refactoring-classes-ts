@@ -8,13 +8,20 @@ export const Container = styled.div<propsAvailability>`
   background: #f0f0f5;
   border-radius: 8px;
 
+  @media (max-width: 768px) {
+    width: 90%;
+    margin: 0 auto;
+  }
+
   header {
     background: #ffb84d;
     border-radius: 8px 8px 0px 0px;
-    height: 192px;
+    height: 252px;
+    max-width: 409px;
     overflow: hidden;
     transition: 0.3s opacity;
     text-align: center;
+    position: relative;
 
     ${props =>
     !props.available &&
@@ -25,6 +32,12 @@ export const Container = styled.div<propsAvailability>`
     img {
       pointer-events: none;
       user-select: none;
+      max-width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
     }
   }
 

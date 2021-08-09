@@ -49,24 +49,28 @@ function Dashboard () {
     }
   }
 
-  const handleUpdateFood = async (food: FoodProps[]) => {
+  const handleUpdateFood = async (food : any) => {
 
     try {
       const foodUpdated = await api.put(
         `/foods/${editingFood.id}`,
         { ...editingFood, ...food },
       );
-      const foodsUpdated = food.map((food: FoodProps) =>
-        food.id !== foodUpdated.data.id ? food : foodUpdated.data,
-      ) ;
+
+      const foodsUpdated = food.map((f: any) =>
+        f.id !== foodUpdated.data.id ? f : foodUpdated.data,
+      );
+
       setFood([...food, foodsUpdated] as any);
+      
     } catch (err) {
       console.log(err);
+    } finally {
+      loadFoods();
     }
   }
 
   const handleDeleteFood = async (id:string) => {
-
     await api.delete(`/foods/${id}`);
     const foodsFiltered = food.filter((food: any) => food.id !== id);
     setFood(foodsFiltered);
